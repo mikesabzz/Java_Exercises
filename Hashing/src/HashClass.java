@@ -9,22 +9,22 @@ public class HashClass {
     // no repeated characters
     // "ndNf" is the longest subsrting
     public void findLongestSubstringLength(String s){
-        HashSet<Character> set = new HashSet<>();
         int n = s.length();
         int left_pointer = 0;
         int right_pointer = 0;
-        int maxlength = 0;
+        int max = 0;
+        HashSet<Character> charSet = new HashSet<>();
         while(right_pointer < n){
-            if(!set.contains(s.charAt(right_pointer))){
-                set.add(s.charAt(right_pointer));
+            if(!charSet.contains(s.charAt(right_pointer))){
+                charSet.add(s.charAt(right_pointer));
                 right_pointer++;
-                maxlength = Math.max(set.size(), maxlength);
+                max = Math.max(charSet.size(), max);
             } else {
-                set.remove(s.charAt(left_pointer));
+                charSet.remove(s.charAt(left_pointer));
                 left_pointer++;
             }
         }
-        System.out.println(maxlength);
+        System.out.println(max);
     }
 
 }
