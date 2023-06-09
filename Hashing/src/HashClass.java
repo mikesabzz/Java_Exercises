@@ -24,7 +24,7 @@ public class HashClass {
                 left_pointer++;
             }
         }
-        System.out.println(max);
+        // System.out.println(max);
     }
 
 }

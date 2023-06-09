@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+// Resolve challenges using Linked Lists
 public class LinkedList {
     private Node head;
 
