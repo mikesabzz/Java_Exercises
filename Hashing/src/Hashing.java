@@ -1,6 +1,8 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class Hashing {
     public boolean anagram(String s, String t){
@@ -28,11 +30,20 @@ public class Hashing {
         }
     }
     public void groupAnagrams(String[] strs){
-        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-        for(int i=0; i<strs.length; i++){
-            
+        HashMap<String, List<String>> map = new HashMap<>();
+        for(String str : strs){
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars);
+            String sortedStr = String.valueOf(chars);
+            if(!map.containsKey(sortedStr)){
+                // the arraylist is empty
+                map.put(sortedStr, new ArrayList<String>());
+            }
+            // add the str that matches the characters of the sorted string
+            map.get(sortedStr).add(str);
         }
-     
+        // return the new array
+        System.out.println(new ArrayList<>(map.values()));
     }
    
 
