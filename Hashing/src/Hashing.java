@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Hashing {
@@ -25,19 +27,21 @@ public class Hashing {
             return false;
         }
     }
-    public boolean isPalindrome(int x){
-        String n = String.valueOf(x);
-        String b = "";
-        for(int i=n.length()-1; i >= 0; i--){
-             b += n.charAt(i);
+    public void groupAnagrams(String[] strs){
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        for(int i=0; i<strs.length; i++){
+            
         }
-        return n.equals(b) ? true : false;
+     
     }
+   
 
     public static void main(String[] args) throws Exception {
         Hashing hash = new Hashing();
         hash.anagram("anagramb", "nambagar");
+        String[] anagrams = {"eat","tea","tan","ate","nat","bat"};
+        hash.groupAnagrams(anagrams);
         
-        System.out.println(hash.isPalindrome(121));
+        
     }
 }
