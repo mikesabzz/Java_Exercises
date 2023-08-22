@@ -17,9 +17,25 @@ public class SlidingWindow {
         return res;
         
     }
+    public boolean checkInclusion(String s1, String s2){
+        int l = 0;
+        int r = 1;
+        while(r < s2.length()){
+            if(s1.charAt(0)+s1.charAt(1) == s2.charAt(l)+s2.charAt(r) ||
+                s1.charAt(1)+s1.charAt(0) == s2.charAt(l)+s2.charAt(r)){
+                return true;
+            } else {
+                l = r;
+            }
+            r++;
+        }
+        return false;
+    }
     public static void main(String[] args){
         SlidingWindow sldWnd = new SlidingWindow();
         int res = sldWnd.characterReplacement("ABAB", 2);
-        System.out.print(res);
+        // System.out.print(res);
+        boolean perm = sldWnd.checkInclusion("ab", "eidooab");
+        System.out.println(perm);
     }
 }
