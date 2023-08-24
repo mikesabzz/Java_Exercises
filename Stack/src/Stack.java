@@ -3,10 +3,8 @@ import java.util.*;
 public class StackMethod {
     public void sortStack(Stack<Integer> value){
         Stack<Integer> newStack = new Stack();
-
         while(!value.isEmpty()){
             int temp = value.pop();
-
             while(!newStack.isEmpty() && newStack.peek() > temp){
                 value.push(newStack.pop());
             }
