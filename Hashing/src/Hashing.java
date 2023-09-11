@@ -46,15 +46,7 @@ public class Hashing {
         System.out.println(new ArrayList<>(map.values()));
     }
     public List<String> letterCombinations(String digits) {
-        HashMap<Character, String> map = new HashMap<>();
-    
-        for(int i=0; i<digits.length(); i++){
-            char[] s = map.get(digits.charAt(i)).toCharArray();
-            for(int j=0; j<s.length; j++){
-                String k = s[j]+s[j];
-                System.out.println(k);
-            }
-        }
+        LinkedList<String> output_arr = new LinkedList<>();
         return new ArrayList(){};
     }
    
