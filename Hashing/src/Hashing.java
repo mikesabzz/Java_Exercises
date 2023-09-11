@@ -45,14 +45,33 @@ public class Hashing {
         // return the new array
         System.out.println(new ArrayList<>(map.values()));
     }
+    public List<String> letterCombinations(String digits) {
+        HashMap<Character, String> map = new HashMap<>();
+        map.put('2', "abc");
+        map.put('3', "def");
+        map.put('4', "ghi");
+        map.put('5', "jkl");
+        map.put('6', "mno");
+        map.put('7', "pqrs");
+        map.put('8', "tuv");
+        map.put('9', "wxyz");
+        for(int i=0; i<digits.length(); i++){
+            char[] s = map.get(digits.charAt(i)).toCharArray();
+            for(int j=0; j<s.length; j++){
+                String k = s[j]+s[j];
+                System.out.println(k);
+            }
+        }
+        return new ArrayList(){};
+    }
    
 
     public static void main(String[] args) throws Exception {
         Hashing hash = new Hashing();
-        hash.anagram("anagramb", "nambagar");
+        // hash.anagram("anagramb", "nambagar");
         String[] anagrams = {"eat","tea","tan","ate","nat","bat"};
-        hash.groupAnagrams(anagrams);
-        
+        // hash.groupAnagrams(anagrams);
+        hash.letterCombinations("23");
         
     }
 }
