@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.*;
 
 public class Hashing {
     public boolean anagram(String s, String t){
@@ -47,8 +48,21 @@ public class Hashing {
     }
     public List<String> letterCombinations(String digits) {
         LinkedList<String> output_arr = new LinkedList<>();
-        //to be continued
-        return new ArrayList(){};
+        output_arr.add("");
+        if(digits.length() == 0){
+            return new LinkedList<>();
+        }
+        String[] char_map = {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        for(int i=0; i<digits.length(); i++){
+            int index = Character.getNumericValue(digits.charAt(i));
+            while(output_arr.peek().length() == i){
+                String perm = output_arr.remove();
+                for(char c : char_map[index].toCharArray()){
+                    output_arr.add(perm + c);
+                }
+            }
+        }
+        return output_arr;
     }
    
 
@@ -58,6 +72,7 @@ public class Hashing {
         String[] anagrams = {"eat","tea","tan","ate","nat","bat"};
         // hash.groupAnagrams(anagrams);
         hash.letterCombinations("23");
+        System.out.println(hash.letterCombinations("23"));
         
     }
 }
