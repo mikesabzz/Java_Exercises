@@ -152,6 +152,24 @@ public class LinkedList {
             // System.out.println(current.data);
             current = current.next;
         }
+        public List<String> letterCombinations(String digits) {
+            LinkedList<String> output_arr = new LinkedList<>();
+            output_arr.add("");
+            if(digits.length() == 0){
+                return new LinkedList<>();
+            }
+            String[] char_map = {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+            for(int i=0; i<digits.length(); i++){
+                int index = Character.getNumericValue(digits.charAt(i));
+                while(output_arr.peek().length() == i){
+                    String perm = output_arr.remove();
+                    for(char c : char_map[index].toCharArray()){
+                        output_arr.add(perm + c);
+                    }
+                }
+            }
+            return output_arr;
+        }
     }
     public static void main(String[] args) throws Exception {
         LinkedList headA = new LinkedList();
