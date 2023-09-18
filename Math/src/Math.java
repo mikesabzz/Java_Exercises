@@ -3,19 +3,16 @@ import java.util.*;
 public class Math {
 
   public int[] plusOne(int[] digits) {
-    List<Integer> finalList = new ArrayList<Integer>();
-    String s = "";
-    for (int i : digits) {
-      s += i;
+    int len = digits.length;
+    for (int i = len - 1; i >= 0; i--) {
+      if (digits[i] < 9) {
+        digits[i]++;
+        return digits;
+      }
+      digits[i] = 0;
     }
-    int secDigits = Integer.parseInt(s) + 1;
-    String secDigitsStr = Integer.toString(secDigits);
-    char[] digitC = secDigitsStr.toCharArray();
-    int[] intArray = new int[digitC.length];
-    for (int i = 0; i < digitC.length; i++) {
-      intArray[i] = Character.getNumericValue(digitC[i]);
-    }
-
+    int[] intArray = new int[len + 1];
+    intArray[0] = 1;
     return intArray;
   }
 
