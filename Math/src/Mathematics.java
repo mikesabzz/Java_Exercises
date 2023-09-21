@@ -18,29 +18,15 @@ public class Mathematics {
   }
 
   public boolean isHappy(int n) {
-    if (n == 1 || n == -1) {
-      return true;
-    }
-    Set<Integer> set = new HashSet<Integer>();
-    while (!set.contains(n)) {
-      set.add(n);
-      n = sumOfSquares(n);
-      if (n == 1) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  public int sumOfSquares(int n) {
     int result = 0;
     while (n != 0) {
-      int digit = n % 10;
-      digit = digit * digit;
-      result += digit;
+      int digits = n % 10;
+      digits = digits * digits;
+      result += digits;
       n = n / 10;
     }
-    return result;
+    System.out.println(result);
+    return false;
   }
 
   public static void main(String[] args) throws Exception {
@@ -50,6 +36,6 @@ public class Mathematics {
     // for (int j : plus) {
     //   System.out.println(j);
     // }
-    System.out.println(mathematics.isHappy(2));
+    System.out.println(mathematics.isHappy(19));
   }
 }
