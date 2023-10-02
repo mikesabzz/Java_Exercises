@@ -19,10 +19,10 @@ public class Mathematics {
 
   public boolean isHappy(int n) {
     int result = 0;
-    while (n != 0) {
-      int digits = n % 10;
-      digits = digits * digits;
-      result += digits;
+    while (result != 0) {
+      int digit = n % 10;
+      digit = digit * digit;
+      result += digit;
       n = n / 10;
     }
     System.out.println(result);
