@@ -56,27 +56,22 @@ public class Two_Pointers {
     System.out.println(new ArrayList<>(array_list));
   }
 
-  // Continue this problem
   // nums = [5, 7, 7, 8, 8, 10] target = 8
-  public int[] searchRange(int[] nums, int target) {
+  public void searchRange(int[] nums, int target) {
     int[] result = new int[2];
     int l = 0;
     int r = nums.length - 1;
     while (l < r) {
       if (nums[l] != target) {
         l++;
-      } else if (nums[r] != target) {
-        r--;
-      } else if (nums[l] == target && nums[r] == target) {
-        result[0] = l;
-        result[1] = r;
-      } else {
-        result[0] = -1;
-        result[1] = -1;
       }
+      if (nums[r] != target) {
+        r--;
+      }
+      result[0] = l;
+      result[1] = r;
     }
-    System.out.println(result[0]);
-    return result;
+    System.out.println(result);
   }
 
   public static void main(String[] args) throws Exception {
@@ -90,9 +85,9 @@ public class Two_Pointers {
     // int[] triplets = { -1, 0, 1, 2, -1, 4 };
     // twoP.threeSum(triplets);
     int[] nums = { 5, 7, 7, 8, 8, 10 };
-    int[] res = twoP.searchRange(nums, 8);
-    for (int k : res) {
-      System.out.println(k);
-    }
+    twoP.searchRange(nums, 8);
+    // for (int k : res) {
+    //   System.out.println(k);
+    // }
   }
 }
