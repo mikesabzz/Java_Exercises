@@ -57,21 +57,34 @@ public class Two_Pointers {
   }
 
   // nums = [5, 7, 7, 8, 8, 10] target = 8
-  public void searchRange(int[] nums, int target) {
+  public int[] searchRange(int[] nums, int target) {
     int[] result = new int[2];
+    result[0] = findStartingIndex(nums, target);
+    result[1] = findEndingIndex(nums, target);
+    return result;
+  }
+
+  public int findStartingIndex(int[] nums, int target) {
+    int index = -1;
     int l = 0;
-    int r = nums.length - 1;
-    while (l < r) {
+    while (l <= nums.length - 1) {
       if (nums[l] != target) {
         l++;
       }
+    }
+    return l;
+  }
+
+  public int findEndingIndex(int[] nums, int target) {
+    int index = -1;
+    int r = nums.length - 1;
+    while (r > 0) {
       if (nums[r] != target) {
         r--;
       }
-      result[0] = l;
-      result[1] = r;
     }
-    System.out.println(result);
+
+    return r;
   }
 
   public static void main(String[] args) throws Exception {
@@ -85,9 +98,9 @@ public class Two_Pointers {
     // int[] triplets = { -1, 0, 1, 2, -1, 4 };
     // twoP.threeSum(triplets);
     int[] nums = { 5, 7, 7, 8, 8, 10 };
-    twoP.searchRange(nums, 8);
-    // for (int k : res) {
-    //   System.out.println(k);
-    // }
+    int[] res = twoP.searchRange(nums, 8);
+    for (int k : res) {
+      System.out.println(k);
+    }
   }
 }
