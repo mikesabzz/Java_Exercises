@@ -61,18 +61,22 @@ public class Two_Pointers {
     int[] result = new int[2];
     result[0] = findStartingIndex(nums, target);
     result[1] = findEndingIndex(nums, target);
+    System.out.println(result);
     return result;
   }
 
   public int findStartingIndex(int[] nums, int target) {
     int index = -1;
     int l = 0;
-    while (l <= nums.length - 1) {
+    while (l < nums.length - 1) {
       if (nums[l] != target) {
         l++;
       }
+      if (nums[l] == target) {
+        index = l;
+      }
     }
-    return l;
+    return index;
   }
 
   public int findEndingIndex(int[] nums, int target) {
@@ -82,9 +86,11 @@ public class Two_Pointers {
       if (nums[r] != target) {
         r--;
       }
+      if (nums[r] == target) {
+        index = r;
+      }
     }
-
-    return r;
+    return index;
   }
 
   public static void main(String[] args) throws Exception {
