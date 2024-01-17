@@ -33,6 +33,32 @@ public class StackMethod {
     return stack.isEmpty();
   }
 
+  public int evalRPN(String[] tokens) {
+    Stack<Integer> stack = new Stack();
+    for (String c : tokens) {
+      if (c.equals("+")) {
+        int a1 = stack.pop();
+        int a2 = stack.pop();
+        stack.push(a2 + a1);
+      } else if (c.equals("-")) {
+        int a1 = stack.pop();
+        int a2 = stack.pop();
+        stack.push(a2 - a1);
+      } else if (c.equals("*")) {
+        int a1 = stack.pop();
+        int a2 = stack.pop();
+        stack.push(a2 * a1);
+      } else if (c.equals("/")) {
+        int a1 = stack.pop();
+        int a2 = stack.pop();
+        stack.push(a2 / a1);
+      } else {
+        stack.push(Integer.parseInt(c));
+      }
+    }
+    return stack.peek();
+  }
+
   public static void main(String[] args) throws Exception {
     Stack<Integer> values = new Stack();
     values.push(30);
@@ -43,6 +69,9 @@ public class StackMethod {
     StackMethod stack = new StackMethod();
     // stack.sortStack(values);
     boolean isVal = stack.isValid("({[})");
-    System.out.println(isVal);
+    // System.out.println(isVal);
+    String[] tokens = { "4", "13", "5", "/", "+" };
+    int ans = stack.evalRPN(tokens);
+    System.out.println(ans);
   }
 }
