@@ -59,6 +59,29 @@ public class StackMethod {
     return stack.peek();
   }
 
+  public List<String> generateParenthesis(int n) {
+    List<String> list = new ArrayList<String>();
+    StringBuilder result = new StringBuilder();
+    Stack<String> stack = new Stack();
+    int open = 0, close = 0;
+
+    if (open < n) {
+      stack.add("(");
+      open++;
+    } else if (close < open) {
+      stack.add(")");
+      close++;
+    }
+
+    if (open == n && close == n) {
+      list.add(result.toString());
+      result.deleteCharAt(result.length() - 1);
+      close--;
+    }
+
+    return list;
+  }
+
   public static void main(String[] args) throws Exception {
     Stack<Integer> values = new Stack();
     values.push(30);
@@ -72,6 +95,7 @@ public class StackMethod {
     // System.out.println(isVal);
     String[] tokens = { "4", "13", "5", "/", "+" };
     int ans = stack.evalRPN(tokens);
-    System.out.println(ans);
+    List<String> testing = stack.generateParenthesis(3);
+    System.out.println(testing);
   }
 }
