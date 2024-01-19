@@ -61,25 +61,29 @@ public class StackMethod {
 
   public List<String> generateParenthesis(int n) {
     List<String> list = new ArrayList<String>();
-    StringBuilder result = new StringBuilder();
-    Stack<String> stack = new Stack();
     int open = 0, close = 0;
-
-    if (open < n) {
-      stack.add("(");
-      open++;
-    } else if (close < open) {
-      stack.add(")");
-      close++;
-    }
-
-    if (open == n && close == n) {
-      list.add(result.toString());
-      result.deleteCharAt(result.length() - 1);
-      close--;
-    }
+    generateValue(list, open, close, n, "");
 
     return list;
+  }
+
+  private void generateValue(
+    List<String> list,
+    int open,
+    int close,
+    int n,
+    String str
+  ) {
+    if (str.length() == 2 * n) {
+      list.add(str);
+      return;
+    }
+    if (open < n) {
+      generateValue(list, open + 1, close, n, str + "(");
+    }
+    if (close < open) {
+      generateValue(list, open, close + 1, n, str = ")");
+    }
   }
 
   public static void main(String[] args) throws Exception {
