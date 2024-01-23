@@ -60,14 +60,12 @@ public class StackMethod {
   }
 
   public List<String> generateParenthesis(int n) {
-    List<String> list = new ArrayList<String>();
-    int open = 0, close = 0;
-    generateValue(list, open, close, n, "");
-
+    List<String> list = new ArrayList();
+    generateValue(list, 0, 0, n, "");
     return list;
   }
 
-  private void generateValue(
+  public void generateValue(
     List<String> list,
     int open,
     int close,
@@ -82,7 +80,7 @@ public class StackMethod {
       generateValue(list, open + 1, close, n, str + "(");
     }
     if (close < open) {
-      generateValue(list, open, close + 1, n, str = ")");
+      generateValue(list, open, close + 1, n, str + ")");
     }
   }
 
