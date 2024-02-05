@@ -19,18 +19,30 @@ public class StackMethod {
 
   public boolean isValid(String s) {
     Stack<Character> stack = new Stack();
-    for (int i = 0; i < s.length(); i++) {
-      if (s.charAt(i) == ')' && stack.peek() == '(') {
-        stack.pop();
-      } else if (s.charAt(i) == '}' && stack.peek() == '{') {
-        stack.pop();
-      } else if (s.charAt(i) == ']' && stack.peek() == '[') {
-        stack.pop();
-      } else {
-        stack.add(s.charAt(i));
+    for (char c : s.toCharArray()) {
+      if (c == '(') {
+        stack.push(')');
+      } else if (c == '[') {
+        stack.push(']');
+      } else if (c == '{') {
+        stack.push('}');
+      } else if (stack.isEmpty() || stack.pop() != c) {
+        return false;
       }
     }
     return stack.isEmpty();
+    // for (int i = 0; i < s.length(); i++) {
+    //     if (s.charAt(i) == ')' && stack.peek() == '(') {
+    //       stack.pop();
+    //     } else if (s.charAt(i) == '}' && stack.peek() == '{') {
+    //       stack.pop();
+    //     } else if (s.charAt(i) == ']' && stack.peek() == '[') {
+    //       stack.pop();
+    //     } else {
+    //       stack.add(s.charAt(i));
+    //     }
+    //   }
+    //   return stack.isEmpty();
   }
 
   public int evalRPN(String[] tokens) {
@@ -93,10 +105,25 @@ public class StackMethod {
     values.push(-3);
     StackMethod stack = new StackMethod();
     // stack.sortStack(values);
-    boolean isVal = stack.isValid("({[})");
-    // System.out.println(isVal);
-    String[] tokens = { "4", "13", "5", "/", "+" };
+    boolean isVal = stack.isValid("(]");
+    // System.out.println("This Paranthesis is valid: " + isVal);
+    String[] tokens = {
+      "10",
+      "6",
+      "9",
+      "3",
+      "+",
+      "-11",
+      "*",
+      "/",
+      "*",
+      "17",
+      "+",
+      "5",
+      "+",
+    };
     int ans = stack.evalRPN(tokens);
+    // System.out.println("The eval of rpn is " + ans);
     List<String> testing = stack.generateParenthesis(3);
     System.out.println(testing);
   }
